@@ -6,6 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from webdriver_manager.chrome import ChromeDriverManager
 import pyperclip
+import pandas as pd
 
 
 service = Service(ChromeDriverManager().install())
@@ -17,8 +18,10 @@ nav.get("https://web.whatsapp.com/")
 mensagem = """
 Este texto foi enviado por mim automaticamente via Python, onde estou testando o selenium para automação de whatsapp! :)
 """
+caminho_do_arquivo = 'dados/contatos.xlsx'
+df = pd.read_excel(caminho_do_arquivo)
 
-lista_contatos = ["Meu Numero", "Andre Lotus", "Amanda", "ChickCao", "Saulo", "Claudemir de Souza"]
+lista_contatos = df['Contatos'].tolist()
 
 time.sleep(30)
 
